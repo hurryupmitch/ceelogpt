@@ -1,0 +1,36 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CeeloGPT: Cee-lo Dice Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="game-container">
+        <h1>CeeloGPT: Cee-lo Dice Game</h1>
+        <div class="funds-input">
+            <label for="startingFunds">Enter Your Starting Funds: $</label>
+            <input type="number" id="startingFunds" min="1">
+            <button id="startGame">Start Game</button>
+        </div>
+        <div class="game-controls">
+            <button id="rollDice" disabled>Roll Dice</button>
+            <input type="number" id="betAmount" placeholder="Bet Amount">
+            <button id="placeBet" disabled>Place Bet</button>
+            <button id="recap">Recap</button>
+        </div>
+        <div class="game-info">
+            <div>Your Roll: <span id="playerRoll"></span></div>
+            <div>My Roll (GPT): <span id="aiRoll"></span></div>
+            <div>Result: <span id="roundResult"></span></div>
+            <div>Your Total: $<span id="playerFunds"></span></div>
+            <div>My Total (GPT): $<span id="aiFunds"></span></div>
+            <div>Pot Total: $<span id="potTotal"></span></div>
+        </div>
+        <div class="game-log" id="gameLog"></div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
