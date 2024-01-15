@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     let playerFunds = 0;
-    let aiFunds = 1000;
+    let aiFunds = 0;
     let pot = 0;
     let gameLog = [];
 
