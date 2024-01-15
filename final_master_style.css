@@ -1,0 +1,87 @@
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+}
+
+.game-container {
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+    border: 2px solid #555;
+    border-radius: 10px;
+    background-color: #222;
+}
+
+header h1 {
+    color: #0f0;
+}
+
+.player-info, .dice-area, .betting-area, .game-log {
+    margin-bottom: 20px;
+}
+
+.player-funds, .current-funds, .betting-area {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.player-funds input, .betting-area input {
+    margin: 0 10px;
+    padding: 5px;
+    border: 1px solid #555;
+    border-radius: 5px;
+    background-color: #444;
+    color: #fff;
+}
+
+button {
+    padding: 10px 20px;
+    margin: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #0f0;
+    color: #000;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #0c0;
+}
+
+.dice-output span {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    margin: 5px;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    background-color: #444;
+    line-height: 50px;
+    font-size: 24px;
+}
+
+.game-log ul {
+    text-align: left;
+    list-style: none;
+}
+
+.game-log li {
+    margin-bottom: 5px;
+}
+
+
+body {
+    /* Updated styling for the "back alley" theme */
+}
+
+.game-container {
+    /* Responsive design adjustments */
+}
+
+/* Additional styles for new elements like leaderboard, settings, and animations */
+
