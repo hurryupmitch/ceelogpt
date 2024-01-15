@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     let playerFunds = 0;
-    let aiFunds = 0;
+    let aiFunds = 1000;
     let pot = 0;
     let gameLog = [];
 
@@ -29,7 +29,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     updateFundsDisplay();
     log("Game started with $" + playerFunds + " funds. Place your bet.");
-}
 
     function playRound() {
         const playerRoll = rollDice();
@@ -40,30 +39,31 @@ document.addEventListener('DOMContentLoaded', () => {
         roundResultSpan.textContent = result.message;
         updateFunds(result.winner);
         disableDiceRoll(); // Disable the roll dice button after playing the round
-    }
 
+
+
+// Disabling the dice roll button until the next bet
 function disableDiceRoll() {
 const rollDiceButton = document.getElementById('rollDice');
 rollDiceButton.disabled = true;
-}
 
-function placeBet() {
+// Ensure all functions are closed and the script ends properly
+
+
+    function placeBet() {
         const bet = parseInt(betAmountInput.value, 10);
         if (isNaN(bet) || bet <= 0 || bet > playerFunds) {
             alert("Invalid bet amount.");
             return;
-        }
         pot += bet * 2; // Both player and AI contribute to the pot
         playerFunds -= bet;
         aiFunds -= bet; // Assuming AI always matches the player's bet
         updateFundsDisplay();
         log(`Bet of $${bet} placed. Total pot is $${pot}.`);
         enableDiceRoll();
-    }
 
     function rollDice() {
         return [1, 2, 3].map(() => 1 + Math.floor(Math.random() * 6));
-    }
 
     function determineRoundOutcome(playerRoll, aiRoll) {
     // Convert rolls to strings for easier comparison
@@ -79,7 +79,6 @@ function placeBet() {
         return { winner: 'player', message: 'Player wins with an instant win!' };
 } else if (aiRollStr === instantWin || playerRollStr === instantLose) {
 return { winner: 'ai', message: 'AI wins with an instant win!' };
-}
 // Check for triples and compare
 if (isTriple(playerRoll) && isTriple(aiRoll)) {
     return compareTriples(playerRoll, aiRoll);
@@ -87,7 +86,6 @@ if (isTriple(playerRoll) && isTriple(aiRoll)) {
     return { winner: 'player', message: 'Player wins with triples!' };
 } else if (isTriple(aiRoll)) {
     return { winner: 'ai', message: 'AI wins with triples!' };
-}
 
 // Check for pairs with an odd die
 if (hasPairWithOdd(playerRoll) && hasPairWithOdd(aiRoll)) {
@@ -96,16 +94,13 @@ if (hasPairWithOdd(playerRoll) && hasPairWithOdd(aiRoll)) {
     return { winner: 'player', message: 'Player wins with a pair and odd die!' };
 } else if (hasPairWithOdd(aiRoll)) {
     return { winner: 'ai', message: 'AI wins with a pair and odd die!' };
-}
 
 // Compare highest single die value
 return compareHighestDie(playerRoll, aiRoll);
 
-}
 
 function isTriple(roll) {
 return new Set(roll).size === 1;
-}
 
 function compareTriples(playerRoll, aiRoll) {
 if (playerRoll[0] > aiRoll[0]) {
@@ -114,14 +109,11 @@ return { winner: 'player', message: 'Player wins with higher triples!' };
 return { winner: 'ai', message: 'AI wins with higher triples!' };
 } else {
 return { winner: null, message: 'Draw with equal triples!' };
-}
-}
 
 function hasPairWithOdd(roll) {
 let counts = {};
 roll.forEach(num => counts[num] = (counts[num] || 0) + 1);
 return Object.values(counts).includes(2);
-}
 
 function compareOddDie(playerRoll, aiRoll) {
 let playerOddDie = getOddDie(playerRoll);
@@ -132,8 +124,6 @@ return { winner: 'player', message: 'Player wins with a higher odd die!' };
 return { winner: 'ai', message: 'AI wins with a higher odd die!' };
 } else {
 return { winner: null, message: 'Draw with equal odd die!' };
-}
-}
 
 function getOddDie(roll) {
 let counts = {};
@@ -141,10 +131,7 @@ roll.forEach(num => counts[num] = (counts[num] || 0) + 1);
 for (let num in counts) {
 if (counts[num] === 1) {
 return parseInt(num, 10);
-}
-}
 return null; // Should not reach here if the roll has a pair and an odd die
-}
 
 function compareHighestDie(playerRoll, aiRoll) {
 let playerHighest = Math.max(...playerRoll);
@@ -155,8 +142,6 @@ return { winner: 'player', message: 'Player wins with the highest single die!' }
 return { winner: 'ai', message: 'AI wins with the highest single die!' };
 } else {
 return { winner: null, message: 'Draw with equal highest single die!' };
-}
-}
 						  
 
 function updateFunds(winner) {
@@ -164,7 +149,6 @@ function updateFunds(winner) {
             playerFunds += pot;
         } else if (winner === 'ai') {
             aiFunds += pot;
-        }
         pot = 0;
         updateFundsDisplay();}
 
@@ -172,48 +156,33 @@ function updateFundsDisplay() {
     playerFundsSpan.textContent = playerFunds;
     aiFundsSpan.textContent = aiFunds;
     potTotalSpan.textContent = pot;
-}
 
 function showRecap() {
     alert(gameLog.join('\\n'));
-}
 
 function log(message) {
     gameLog.push(message);
     gameLogDiv.textContent = gameLog.join('\\n');
-}
 
 function enableDiceRoll() {
     const rollDiceButton = document.getElementById('rollDice');
     rollDiceButton.disabled = false;
-}
 
-function disableDiceRoll() {
     const rollDiceButton = document.getElementById('rollDice');
     rollDiceButton.disabled = true;
-}
 });
-}
 
-function updateFundsDisplay() {
     playerFundsSpan.textContent = playerFunds;
     aiFundsSpan.textContent = aiFunds;
     potTotalSpan.textContent = pot;
-}
 
-function showRecap() {
     alert(gameLog.join('\\n'));
-}
 
-function log(message) {
     gameLog.push(message);
     gameLogDiv.textContent = gameLog.join('\\n');
-}
 
-function enableDiceRoll() {
     const rollDiceButton = document.getElementById('rollDice');
     rollDiceButton.disabled = false;
-}
 
 
 
