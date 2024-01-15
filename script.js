@@ -1,16 +1,44 @@
 
-        undsSpan.textContent = aiFunds;
-        potTotalSpan.textContent = pot;
+document.addEventListener('DOMContentLoaded', () => {
+    let playerFunds = 0;
+    let aiFunds = 1000;
+    let pot = 0;
+    let gameLog = [];
+
+    const startingFundsInput = document.getElementById('startingFunds');
+    const playerRollSpan = document.getElementById('playerRoll');
+    const aiRollSpan = document.getElementById('aiRoll');
+    const roundResultSpan = document.getElementById('roundResult');
+    const playerFundsSpan = document.getElementById('playerFunds');
+    const aiFundsSpan = document.getElementById('aiFunds');
+    const potTotalSpan = document.getElementById('potTotal');
+    const betAmountInput = document.getElementById('betAmount');
+    const gameLogDiv = document.getElementById('gameLog');
+
+    const startGameButton = document.getElementById('startGame');
+    const rollDiceButton = document.getElementById('rollDice');
+    const placeBetButton = document.getElementById('placeBet');
+    const recapButton = document.getElementById('recap');
+
+    startGameButton.addEventListener('click', startGame);
+    rollDiceButton.addEventListener('click', playRound);
+    placeBetButton.addEventListener('click', placeBet);
+    recapButton.addEventListener('click', showRecap);
+
+    // Implementation of startGame, playRound, placeBet, showRecap, and other functions
+    // ...
+
+    function startGame() {
+        playerFunds = parseInt(startingFundsInput.value, 10);
+        if (isNaN(playerFunds) || playerFunds <= 0) {
+            alert("Please enter a valid starting fund amount.");
+            return;
+        }
+        updateFundsDisplay();
+        log("Game started. Place your bet.");
+        rollDiceButton.disabled = false;
+        placeBetButton.disabled = false;
     }
 
-    function showRecap() {
-        alert(gameLog.join('\n'));
-    }
-
-    function log(message) {
-        gameLog.push(message);
-        gameLogDiv.textContent = gameLog.join('\n');
-    }
+    // ... rest of the JavaScript code ...
 });
-
-// Note: This implementation is simplified and may need further adjustments to fully match the game's rules.
