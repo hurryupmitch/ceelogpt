@@ -47,10 +47,7 @@ const rollDiceButton = document.getElementById('rollDice');
 rollDiceButton.disabled = true;
 }
 
-// Ensure all functions are closed and the script ends properly
-
-
-    function placeBet() {
+function placeBet() {
         const bet = parseInt(betAmountInput.value, 10);
         if (isNaN(bet) || bet <= 0 || bet > playerFunds) {
             alert("Invalid bet amount.");
@@ -158,7 +155,6 @@ return { winner: 'player', message: 'Player wins with the highest single die!' }
 return { winner: 'ai', message: 'AI wins with the highest single die!' };
 } else {
 return { winner: null, message: 'Draw with equal highest single die!' };
-}
 }
 }
 						  
