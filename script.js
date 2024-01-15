@@ -42,9 +42,6 @@ document.addEventListener('DOMContentLoaded', () => {
         disableDiceRoll(); // Disable the roll dice button after playing the round
     }
 
-
-
-// Disabling the dice roll button until the next bet
 function disableDiceRoll() {
 const rollDiceButton = document.getElementById('rollDice');
 rollDiceButton.disabled = true;
